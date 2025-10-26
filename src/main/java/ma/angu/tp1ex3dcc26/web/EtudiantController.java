@@ -27,7 +27,7 @@ import java.util.List;
                 version = "1.0.0"
         ),
         servers = @Server(
-                url = "http://localhost:8083"
+                url = "http://localhost:8082"
         )
 )
 
@@ -80,7 +80,7 @@ public class EtudiantController {
         return ResponseEntity.ok(etudiantService.getEtudiantWithFiliere(id));
     }
     @Operation(
-            summary = " Ajouter un compte",
+            summary = " Ajouter un etudiant",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     required = true,
                     content = @Content(
