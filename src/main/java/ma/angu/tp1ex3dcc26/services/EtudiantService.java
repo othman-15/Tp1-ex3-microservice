@@ -13,6 +13,7 @@ public interface EtudiantService {
         public List<ResponseEtudiantDto>  getAllEtudiants();
         public ResponseEtudiantDto update_etu(Long id,RequestEtudiantDto requestEtudiantDto);
         public void delete_etu(Long id);
+        public ResponseEtudiantDto getEtudiantWithFiliere(Long id);
 
 
 }

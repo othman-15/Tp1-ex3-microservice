@@ -26,7 +26,7 @@ public class EtudiantController {
     public ResponseEntity<ResponseEtudiantDto>  getEtudiantById(@PathVariable("id") Long id) {
 
 
-        return ResponseEntity.ok(etudiantService.getEtudiantById(id));
+        return ResponseEntity.ok(etudiantService.getEtudiantWithFiliere(id));
     }
     @PostMapping
     public ResponseEntity<ResponseEtudiantDto> createEtudiant(@RequestBody RequestEtudiantDto requestEtudiantDto) {

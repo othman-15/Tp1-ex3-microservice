@@ -1,6 +1,8 @@
 package ma.angu.tp1ex3dcc26.services;
 
 import lombok.AllArgsConstructor;
+import ma.angu.tp1ex3dcc26.client.FiliereClient;
+import ma.angu.tp1ex3dcc26.dtos.FiliereDto;
 import ma.angu.tp1ex3dcc26.dtos.RequestEtudiantDto;
 import ma.angu.tp1ex3dcc26.dtos.ResponseEtudiantDto;
 import ma.angu.tp1ex3dcc26.entities.Etudiant;
@@ -18,6 +20,7 @@ import java.util.List;
 public class EtudiantServiceImpl implements EtudiantService {
     private EtudiantRepository etudiantRepository;
     private EtudiantMapper etudiantMapper;
+    private  FiliereClient filiereClient;
 
     @Override
     public ResponseEtudiantDto addEtudiant(RequestEtudiantDto requestEtudiantDto) {
@@ -70,5 +73,23 @@ public class EtudiantServiceImpl implements EtudiantService {
     public void delete_etu(Long id) {
 
          etudiantRepository.deleteById(id);;
+    }
+
+    @Override
+    public ResponseEtudiantDto getEtudiantWithFiliere(Long id) {
+        Etudiant etudiant = etudiantRepository.findById(id).orElseThrow();
+
+
+        ResponseEtudiantDto response = etudiantMapper.entity_to_Dto(etudiant);
+
+
+        FiliereDto filiere = filiereClient.getFiliereById(etudiant.getFiliereId());
+        if (filiere != null) {
+            response.setFiliere(filiere);
+        }else {
+        filiere=null;}
+
+
+        return response;
     }
 }
