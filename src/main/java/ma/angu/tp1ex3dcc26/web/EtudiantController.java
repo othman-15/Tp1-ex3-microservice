@@ -15,6 +15,7 @@ import ma.angu.tp1ex3dcc26.dtos.ResponseEtudiantDto;
 import ma.angu.tp1ex3dcc26.entities.Etudiant;
 import ma.angu.tp1ex3dcc26.services.EtudiantService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
-
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @GetMapping
    public ResponseEntity<List<ResponseEtudiantDto>>  getAllEtudiants() {
        return ResponseEntity.ok(etudiantService.getAllEtudiants());
@@ -73,6 +74,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto>  getEtudiantById(@PathVariable("id") Long id) {
 
@@ -100,6 +102,8 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
+
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @PostMapping
     public ResponseEntity<ResponseEtudiantDto> createEtudiant(@RequestBody RequestEtudiantDto requestEtudiantDto) {
 
@@ -131,6 +135,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto> updateEtu(@PathVariable Long id, @RequestBody RequestEtudiantDto requestEtudiantDto) {
 
@@ -146,6 +151,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @DeleteMapping("{id}")
     public ResponseEntity DeleteMapping(@PathVariable Long id) {
 
