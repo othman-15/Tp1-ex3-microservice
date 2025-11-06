@@ -54,7 +54,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
    public ResponseEntity<List<ResponseEtudiantDto>>  getAllEtudiants() {
        return ResponseEntity.ok(etudiantService.getAllEtudiants());
@@ -74,7 +74,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto>  getEtudiantById(@PathVariable("id") Long id) {
 
@@ -103,7 +103,7 @@ public class EtudiantController {
             }
     )
 
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<ResponseEtudiantDto> createEtudiant(@RequestBody RequestEtudiantDto requestEtudiantDto) {
 
@@ -135,7 +135,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto> updateEtu(@PathVariable Long id, @RequestBody RequestEtudiantDto requestEtudiantDto) {
 
@@ -151,7 +151,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "5xx",description = "erreur serveur"),
             }
     )
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("{id}")
     public ResponseEntity DeleteMapping(@PathVariable Long id) {
 
